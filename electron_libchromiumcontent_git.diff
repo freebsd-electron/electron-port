@@ -1,0 +1,20 @@
+--- a/script/bootstrap.py	2018-02-26 10:33:36.910870000 +0400
++++ b/script/bootstrap.py	2018-02-26 10:34:00.760017000 +0400
+@@ -31,7 +31,7 @@
+   if sys.platform == 'cygwin':
+     update_win32_python()
+ 
+-  update_submodules()
++  #update_submodules()
+ 
+   libcc_source_path = args.libcc_source_path
+   libcc_shared_library_path = args.libcc_shared_library_path
+@@ -149,7 +149,7 @@
+   target_dir = os.path.join(DOWNLOAD_DIR, 'libchromiumcontent')
+   script = os.path.join(VENDOR_DIR, 'libchromiumcontent', 'script',
+                         'download')
+-  args = ['-f', '-c', get_libchromiumcontent_commit(), '--target_arch',
++  args = ['-f', '-c', '2bdad00', '--target_arch',
+           target_arch, url, target_dir]
+   if (libcc_source_path != None and
+       libcc_shared_library_path != None and

@@ -24,7 +24,8 @@ GH_TUPLE=	boto:boto:f7574aa:boto/vendor/boto \
 		electron:native-mate:bf92fa8:native_mate/vendor/native_mate \
 		electron:node:bf06b64:node/vendor/node \
 		electron:pdf-viewer:a5251e4:pdf_viewer/vendor/pdf_viewer \
-		requests:requests:e4d59be:requests/vendor/requests
+		requests:requests:e4d59be:requests/vendor/requests \
+		yzgyyang:grit:9536fb6:grit/vendor/pdf_viewer/vendor/grit
 
 post-extract:
 	${MKDIR} ${WRKSRC}/vendor/download/libchromiumcontent
@@ -40,6 +41,7 @@ pre-build:
 	patch -p1 --ignore-whitespace -d ${WRKSRC}/vendor/native_mate/ < electron_vendor_native_matev1.diff
 	patch -p1 --ignore-whitespace -d ${WRKSRC}/brightray/ < electron_brightrayv3.diff
 	patch -p1 --ignore-whitespace -d ${WRKSRC}/vendor/libchromiumcontent/ < electron_vendor_libchromiumcontentv1.diff
+	patch -p1 --ignore-whitespace -d ${WRKSRC} < electron_libchromiumcontent_git.diff
 
 do-build:
 	(cd ${WRKSRC} && script/bootstrap.py -v --clang_dir=/usr)

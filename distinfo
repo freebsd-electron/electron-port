@@ -1,4 +1,4 @@
-TIMESTAMP = 1518081527
+TIMESTAMP = 1519664922
 SHA256 (libchromiumcontent.zip) = ac7a7c5ff271c850591708aa74b8a3cb3725a7573a82299049309084ce2aef31
 SIZE (libchromiumcontent.zip) = 27536750
 SHA256 (libchromiumcontent-static.zip) = d4ef59e7078e1b94e1caf5461aa4adde8624dab081f6010417ab50889a901a7c
@@ -25,3 +25,5 @@ SHA256 (electron-pdf-viewer-a5251e4_GH0.tar.gz) = 3b4a8a878ac5a723a4d5acbe651359
 SIZE (electron-pdf-viewer-a5251e4_GH0.tar.gz) = 42060
 SHA256 (requests-requests-e4d59be_GH0.tar.gz) = 6a12c3b44e990a984353d26eae46a6b96100fa05c52959138bbe2345718b013f
 SIZE (requests-requests-e4d59be_GH0.tar.gz) = 663477
+SHA256 (yzgyyang-grit-9536fb6_GH0.tar.gz) = 9765e645f18cf5d5c2eba0cfa586824c4eae79b42b2433422ba07de221240bb8
+SIZE (yzgyyang-grit-9536fb6_GH0.tar.gz) = 378428
