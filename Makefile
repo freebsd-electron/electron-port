@@ -12,7 +12,8 @@ MAINTAINER=	ygy@FreeBSD.org
 EXTRACT_DEPENDS=unzip:archivers/unzip
 BUILD_DEPENDS=  python:lang/python \
                 node:www/node \
-                npm:www/npm
+                npm:www/npm \
+		libnotify>0:devel/libnotify
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libFLAC.so:audio/flac \
 		libplds4.so:devel/nspr \
