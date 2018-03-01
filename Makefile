@@ -42,6 +42,7 @@ pre-build:
 	patch -p1 --ignore-whitespace -d ${WRKSRC}/brightray/ < electron_brightrayv3.diff
 	patch -p1 --ignore-whitespace -d ${WRKSRC}/vendor/libchromiumcontent/ < electron_vendor_libchromiumcontentv1.diff
 	patch -p1 --ignore-whitespace -d ${WRKSRC} < electron_libchromiumcontent_git.diff
+	patch -p1 --ignore-whitespace -d ${WRKSRC} < electron_pin_typescript_version.diff
 
 do-build:
 	(cd ${WRKSRC} && script/bootstrap.py -v --clang_dir=/usr)
