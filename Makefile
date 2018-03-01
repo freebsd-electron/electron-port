@@ -62,5 +62,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/out/R/snapshot_blob.bin ${STAGEDIR}${PREFIX}/lib/electron
 	${INSTALL_DATA} ${WRKSRC}/out/R/ui_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
 	${INSTALL_DATA} ${WRKSRC}/out/R/views_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/libffmpeg.so ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/libnode.so ${STAGEDIR}${PREFIX}/lib/electron
 
 .include <bsd.port.mk>
