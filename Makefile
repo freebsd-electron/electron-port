@@ -9,7 +9,7 @@ DISTFILES=	libchromiumcontent.zip libchromiumcontent-static.zip
 
 MAINTAINER=	ygy@FreeBSD.org
 
-EXTRACT_DEPENDS=unzip:archivers/unzip
+EXTRACT_DEPENDS=${LOCALBASE}/bin/unzip:archivers/unzip
 BUILD_DEPENDS=  python:lang/python \
                 node:www/node \
                 npm:www/npm \
