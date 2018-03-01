@@ -26,7 +26,11 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libcups.so:print/cups \
 		libspeechd.so:accessibility/speech-dispatcher \
 		libasound.so:audio/alsa-lib \
-		libsnappy.so:archivers/snappy
+		libsnappy.so:archivers/snappy \
+		libnss3.so:security/nss \
+		libsmime3.so:security/nss \
+		libssl3.so:security/nss \
+		libnssutil3.so:security/nss
 
 USES=		gettext-runtime jpeg
 USE_GNOME=      atk cairo gdkpixbuf2 gconf2 glib20 gtk30 libxslt pango
