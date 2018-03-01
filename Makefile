@@ -80,6 +80,7 @@ do-build:
 do-install:
 	${MKDIR} ${STAGEDIR}${TARGET_DIR}
 	(cd ${WRKSRC}/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${TARGET_DIR})
+	${CHMOD} +x ${STAGEDIR}${TARGET_DIR}/electron
 	${RLN} ${STAGEDIR}${TARGET_DIR}/electron ${STAGEDIR}${PREFIX}/bin/electron
 
 .include <bsd.port.mk>
