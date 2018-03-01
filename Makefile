@@ -49,4 +49,18 @@ do-build:
 	(cd ${WRKSRC} && script/build.py -c R)
 	(cd ${WRKSRC} && script/create-dist.py)
 
+do-install:
+	${INSTALL} -d ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_PROGRAM} ${WRKSRC}/out/R/electron ${STAGEDIR}${PREFIX}/lib/electron
+	${LN} -sf ${STAGEDIR}${PREFIX}/lib/electron/electron ${STAGEDIR}${PREFIX}/bin/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/blink_image_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/content_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/content_shell.pak ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/icudtl.dat ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/natives_blob.bin ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/pdf_viewer_resources.pak ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/snapshot_blob.bin ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/ui_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
+	${INSTALL_DATA} ${WRKSRC}/out/R/views_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
+
 .include <bsd.port.mk>
