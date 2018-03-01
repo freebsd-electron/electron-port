@@ -76,18 +76,7 @@ do-build:
 
 do-install:
 	${INSTALL} -d ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_PROGRAM} ${WRKSRC}/out/R/electron ${STAGEDIR}${PREFIX}/lib/electron
+	(cd ${WRKSRC}/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/lib/electron)
 	${RLN} ${STAGEDIR}${PREFIX}/lib/electron/electron ${STAGEDIR}${PREFIX}/bin/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/blink_image_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/content_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/content_shell.pak ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/icudtl.dat ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/natives_blob.bin ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/pdf_viewer_resources.pak ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/snapshot_blob.bin ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/ui_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/views_resources_200_percent.pak ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/libffmpeg.so ${STAGEDIR}${PREFIX}/lib/electron
-	${INSTALL_DATA} ${WRKSRC}/out/R/libnode.so ${STAGEDIR}${PREFIX}/lib/electron
 
 .include <bsd.port.mk>
