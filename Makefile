@@ -9,7 +9,28 @@ DISTFILES=	libchromiumcontent.zip libchromiumcontent-static.zip
 
 MAINTAINER=	ygy@FreeBSD.org
 
-EXTRACT_DEPENDS=${LOCALBASE}/bin/unzip:archivers/unzip
+EXTRACT_DEPENDS=unzip:archivers/unzip
+BUILD_DEPENDS=  python:lang/python \
+                node:www/node \
+                npm:www/npm
+LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+		libFLAC.so:audio/flac \
+		libplds4.so:devel/nspr \
+		libplc4.so:devel/nspr \
+		libnspr4.so:devel/nspr \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libexpat.so:textproc/expat2 \
+		libharfbuzz.so:print/harfbuzz \
+		libpng16.so:graphics/png \
+		libcups.so:print/cups \
+		libspeechd.so:accessibility/speech-dispatcher \
+		libasound.so:audio/alsa-lib \
+		libsnappy.so:archivers/snappy
+
+USES=		gettext-runtime jpeg
+USE_GNOME=      atk cairo gdkpixbuf2 gconf2 glib20 gtk30 libxslt pango
+USE_XORG=	xcb xcomposite xcursor xdamage xext xfixes xi xrandr xrender xtst xscrnsaver x11
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	electron
