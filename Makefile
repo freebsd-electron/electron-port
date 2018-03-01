@@ -53,6 +53,8 @@ GH_TUPLE=	boto:boto:f7574aa:boto/vendor/boto \
 		requests:requests:e4d59be:requests/vendor/requests \
 		yzgyyang:grit:9536fb6:grit/vendor/pdf_viewer/vendor/grit
 
+TARGET_DIR=	${PREFIX}/lib/electron
+
 post-extract:
 	${MKDIR} ${WRKSRC}/vendor/download/libchromiumcontent
 	echo ${WRKSRC}
@@ -76,8 +78,8 @@ do-build:
 	(cd ${WRKSRC} && script/create-dist.py)
 
 do-install:
-	${INSTALL} -d ${STAGEDIR}${PREFIX}/lib/electron
-	(cd ${WRKSRC}/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/lib/electron)
-	${RLN} ${STAGEDIR}${PREFIX}/lib/electron/electron ${STAGEDIR}${PREFIX}/bin/electron
+	${MKDIR} ${STAGEDIR}${TARGET_DIR}
+	(cd ${WRKSRC}/dist && ${COPYTREE_SHARE} . ${STAGEDIR}${TARGET_DIR})
+	${RLN} ${STAGEDIR}${TARGET_DIR}/electron ${STAGEDIR}${PREFIX}/bin/electron
 
 .include <bsd.port.mk>
