@@ -802,11 +802,13 @@ diff --git a/script/lib/config.py b/script/lib/config.py
 index 5ea60fc..217372a 100644
 --- a/script/lib/config.py
 +++ b/script/lib/config.py
-@@ -15,6 +15,7 @@ PLATFORM = {
+@@ -15,6 +15,9 @@ PLATFORM = {
    'cygwin': 'win32',
    'darwin': 'darwin',
    'linux2': 'linux',
++  'freebsd10': 'freebsd',
 +  'freebsd11': 'freebsd',
++  'freebsd12': 'freebsd',
    'win32': 'win32',
  }[sys.platform]
  

@@ -1,0 +1,11 @@
+--- script/bootstrap.py.orig	2018-03-03 13:08:30.759638000 +0100
++++ script/bootstrap.py	2018-03-03 13:09:19.237371000 +0100
+@@ -24,8 +24,6 @@
+ 
+   args = parse_args()
+   defines = args_to_defines(args)
+-  if not args.yes and PLATFORM != 'win32':
+-    check_root()
+   if args.verbose:
+     enable_verbose_mode()
+   if sys.platform == 'cygwin':

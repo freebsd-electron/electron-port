@@ -9,11 +9,11 @@ DISTFILES=	libchromiumcontent.zip libchromiumcontent-static.zip
 
 MAINTAINER=	ygy@FreeBSD.org
 
-EXTRACT_DEPENDS=${LOCALBASE}/bin/unzip:archivers/unzip
-BUILD_DEPENDS=  python:lang/python \
-                node:www/node \
-                npm:www/npm \
-		libnotify>0:devel/libnotify
+BUILD_DEPENDS=	python:lang/python \
+	node:www/node \
+	npm:www/npm \
+	libnotify>0:devel/libnotify
+
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libFLAC.so:audio/flac \
 		libplds4.so:devel/nspr \
@@ -34,7 +34,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libnssutil3.so:security/nss
 
 USES=		gettext-runtime jpeg
-USE_GNOME=      atk cairo gdkpixbuf2 gconf2 glib20 gtk30 libxslt pango
+USE_GNOME=	atk cairo gdkpixbuf2 gconf2 glib20 gtk30 libxslt pango
 USE_XORG=	xcb xcomposite xcursor xdamage xext xfixes xi xrandr xrender xtst xscrnsaver x11
 
 USE_GITHUB=	yes
@@ -55,20 +55,20 @@ GH_TUPLE=	boto:boto:f7574aa:boto/vendor/boto \
 
 post-extract:
 	${MKDIR} ${WRKSRC}/vendor/download/libchromiumcontent
-	echo ${WRKSRC}
-	${UNZIP_CMD} -d ${WRKSRC}/vendor/download/libchromiumcontent/ \
+	${UNZIP_NATIVE_CMD} -d ${WRKSRC}/vendor/download/libchromiumcontent/ \
 		${DISTDIR}/${DIST_SUBDIR}/libchromiumcontent.zip
-	${UNZIP_CMD} -d ${WRKSRC}/vendor/download/libchromiumcontent/ \
+	${UNZIP_NATIVE_CMD} -d ${WRKSRC}/vendor/download/libchromiumcontent/ \
 		${DISTDIR}/${DIST_SUBDIR}/libchromiumcontent-static.zip
 
-pre-build:
-	patch -p1 --ignore-whitespace -d ${WRKSRC} < electron_111.diff
+post-patch:
+	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC} < ${FILESDIR}/electron_111.diff
+	${PATCH} -d ${WRKSRC} < ${FILESDIR}/script_bootstrap.py.diff
 	(cd ${WRKSRC} && script/bootstrap.py -v --clang_dir=/usr || true)
-	patch -p1 --ignore-whitespace -d ${WRKSRC}/vendor/native_mate/ < electron_vendor_native_matev1.diff
-	patch -p1 --ignore-whitespace -d ${WRKSRC}/brightray/ < electron_brightrayv3.diff
-	patch -p1 --ignore-whitespace -d ${WRKSRC}/vendor/libchromiumcontent/ < electron_vendor_libchromiumcontentv1.diff
-	patch -p1 --ignore-whitespace -d ${WRKSRC} < electron_libchromiumcontent_git.diff
-	patch -p1 --ignore-whitespace -d ${WRKSRC} < electron_pin_typescript_version.diff
+	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC}/vendor/native_mate/ < ${FILESDIR}/electron_vendor_native_matev1.diff
+	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC}/brightray/ < ${FILESDIR}/electron_brightrayv3.diff
+	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC}/vendor/libchromiumcontent/ < ${FILESDIR}/electron_vendor_libchromiumcontentv1.diff
+	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC} < ${FILESDIR}/electron_libchromiumcontent_git.diff
+	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC} < ${FILESDIR}/electron_pin_typescript_version.diff
 
 do-build:
 	(cd ${WRKSRC} && script/bootstrap.py -v --clang_dir=/usr)
