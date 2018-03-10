@@ -3,14 +3,14 @@ bin/electron
 %%DATADIR%%/LICENSES.chromium.html
 %%DATADIR%%/blink_image_resources_200_percent.pak
 %%DATADIR%%/chromedriver
-%%DATADIR%%/chromedriver-v1.8.2-beta.2-freebsd-x64.zip
+%%DATADIR%%/chromedriver-v1.8.2-freebsd-x64.zip
 %%DATADIR%%/content_resources_200_percent.pak
 %%DATADIR%%/content_shell.pak
 %%DATADIR%%/electron
 %%DATADIR%%/electron-api.json
-%%DATADIR%%/electron-v1.8.2-beta.2-freebsd-x64.zip
+%%DATADIR%%/electron-v1.8.2-freebsd-x64.zip
 %%DATADIR%%/electron.d.ts
-%%DATADIR%%/ffmpeg-v1.8.2-beta.2-freebsd-x64.zip
+%%DATADIR%%/ffmpeg-v1.8.2-freebsd-x64.zip
 %%DATADIR%%/icudtl.dat
 %%DATADIR%%/libffmpeg.so
 %%DATADIR%%/libnode.so
@@ -69,7 +69,7 @@ bin/electron
 %%DATADIR%%/locales/zh-CN.pak
 %%DATADIR%%/locales/zh-TW.pak
 %%DATADIR%%/mksnapshot
-%%DATADIR%%/mksnapshot-v1.8.2-beta.2-freebsd-x64.zip
+%%DATADIR%%/mksnapshot-v1.8.2-freebsd-x64.zip
 %%DATADIR%%/natives_blob.bin
 %%DATADIR%%/pdf_viewer_resources.pak
 %%DATADIR%%/resources/default_app.asar

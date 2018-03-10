@@ -2,17 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	electron
-DISTVERSION=	1.0
-CATEGORIES=	www
-MASTER_SITES=	https://github.com/yzgyyang/freebsd-ports-libchromiumcontent/releases/download/v61.0.3163.100/
+DISTVERSION=	1.8.2
+CATEGORIES=	devel
+MASTER_SITES=	https://github.com/yzgyyang/freebsd-libcc-release/releases/download/v59.0.3071.115/
 DISTFILES=	libchromiumcontent.zip libchromiumcontent-static.zip
 
 MAINTAINER=	ygy@FreeBSD.org
 
+LICENSE=	MIT
+
 BUILD_DEPENDS=	python:lang/python \
-	node:www/node \
-	npm:www/npm \
-	libnotify>0:devel/libnotify
+		node:www/node \
+		npm:www/npm \
+		libnotify>0:devel/libnotify
 
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libFLAC.so:audio/flac \
@@ -40,16 +42,16 @@ USE_XORG=	xcb xcomposite xcursor xdamage xext xfixes xi xrandr xrender xtst xscr
 USE_GITHUB=	yes
 GH_ACCOUNT=	electron
 GH_PROJECT=	electron
-GH_TAGNAME=	4dab824
+GH_TAGNAME=	v1.8.2
 GH_TUPLE=	boto:boto:f7574aa:boto/vendor/boto \
-		electron:chromium-breakpad:82f0452e:breakpad/vendor/breakpad \
-		electron:crashpad:07072bf:crashpad/vendor/crashpad \
+		electron:chromium-breakpad:82f0452:breakpad/vendor/breakpad \
+		electron:crashpad:f7c3207:crashpad/vendor/crashpad \
 		yzgyyang:depot-tools:4fa73b8:depot_tools/vendor/depot_tools \
-		electron:gyp:eea8c79:gyp/vendor/gyp \
-		electron:libchromiumcontent:2bdad00:libchromiumcontent/vendor/libchromiumcontent \
+		electron:gyp:549e55a:gyp/vendor/gyp \
+		electron:libchromiumcontent:dbd83b6:libchromiumcontent/vendor/libchromiumcontent \
 		electron:native-mate:bf92fa8:native_mate/vendor/native_mate \
-		electron:node:bf06b64:node/vendor/node \
-		electron:pdf-viewer:a5251e4:pdf_viewer/vendor/pdf_viewer \
+		electron:node:2586ef1:node/vendor/node \
+		electron:pdf-viewer:beb3687:pdf_viewer/vendor/pdf_viewer \
 		requests:requests:e4d59be:requests/vendor/requests \
 		yzgyyang:grit:9536fb6:grit/vendor/pdf_viewer/vendor/grit
 
@@ -68,7 +70,6 @@ post-patch:
 	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC}/brightray/ < ${FILESDIR}/electron_brightrayv3.diff
 	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC}/vendor/libchromiumcontent/ < ${FILESDIR}/electron_vendor_libchromiumcontentv1.diff
 	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC} < ${FILESDIR}/electron_libchromiumcontent_git.diff
-	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC} < ${FILESDIR}/electron_pin_typescript_version.diff
 
 do-build:
 	(cd ${WRKSRC} && script/bootstrap.py -v --clang_dir=/usr)
