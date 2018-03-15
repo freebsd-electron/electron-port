@@ -83,4 +83,9 @@ do-install:
 	${CHMOD} +x ${STAGEDIR}${DATADIR}/electron
 	${RLN} ${STAGEDIR}${DATADIR}/electron ${STAGEDIR}${PREFIX}/bin/electron
 
+post-install:
+.for filename in chromedriver mksnapshot libffmpeg.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/share/electron/${filename}
+.endfor
+
 .include <bsd.port.mk>
