@@ -26,6 +26,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libexpat.so:textproc/expat2 \
 		libharfbuzz.so:print/harfbuzz \
 		libpng16.so:graphics/png \
+		libwebp.so:graphics/webp \
 		libcups.so:print/cups \
 		libspeechd.so:accessibility/speech-dispatcher \
 		libasound.so:audio/alsa-lib \
