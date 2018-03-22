@@ -43,7 +43,7 @@ USE_XORG=	xcb xcomposite xcursor xdamage xext xfixes xi xrandr xrender xtst xscr
 USE_GITHUB=	yes
 GH_ACCOUNT=	electron
 GH_PROJECT=	electron
-GH_TAGNAME=	v1.8.2
+GH_TAGNAME=	v${DISTVERSION}
 GH_TUPLE=	boto:boto:f7574aa:boto/vendor/boto \
 		electron:chromium-breakpad:82f0452:breakpad/vendor/breakpad \
 		electron:crashpad:f7c3207:crashpad/vendor/crashpad \
