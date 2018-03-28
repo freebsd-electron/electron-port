@@ -1,5 +1,7 @@
 # freebsd-ports-electron
 
+[![Join the chat at https://gitter.im/freebsd-electron/Lobby](https://badges.gitter.im/freebsd-electron/Lobby.svg)](https://gitter.im/freebsd-electron/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This repository contains the FreeBSD build scripts, patches and checksum for [Electron](https://electronjs.org/) ([GitHub](https://github.com/electron/electron)).
 
 This port is still in an early stage, so more eyes and hands are always welcome! Please don't hesitate to submit new [Issues](https://github.com/yzgyyang/freebsd-ports-electron/issues) or [Pull Requests](https://github.com/yzgyyang/freebsd-ports-electron/pulls).
