@@ -8,13 +8,14 @@ MASTER_SITES=	https://github.com/yzgyyang/freebsd-libcc-release/releases/downloa
 DISTFILES=	libchromiumcontent.zip libchromiumcontent-static.zip
 
 MAINTAINER=	ygy@FreeBSD.org
+COMMENT=	Framework for creating native applications with web technologies
 
 LICENSE=	MIT
 
-ONLY_FOR_ARCH=	amd64
+ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	Electron is required to be built on a 64bit machine
 
-FETCH_DEPENDS= npm:www/npm
+FETCH_DEPENDS=	npm:www/npm
 
 BUILD_DEPENDS=	python:lang/python \
 		node:www/node \
@@ -46,6 +47,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 USES=		gettext-runtime jpeg
 USE_GNOME=	atk cairo gdkpixbuf2 gconf2 glib20 gtk30 libxslt pango
 USE_XORG=	xcb xcomposite xcursor xdamage xext xfixes xi xrandr xrender xtst xscrnsaver x11
+USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	electron
@@ -65,11 +67,11 @@ GH_TUPLE=	boto:boto:f7574aa:boto/vendor/boto \
 
 post-fetch:
 	${MKDIR} ${WRKDIR}/npm-precache
-	cp ${FILESDIR}/package.json ${WRKDIR}/npm-precache
-	cp ${FILESDIR}/package-lock.json ${WRKDIR}/npm-precache
+	${CP} ${FILESDIR}/package.json ${WRKDIR}/npm-precache
+	${CP} ${FILESDIR}/package-lock.json ${WRKDIR}/npm-precache
 	( cd ${WRKDIR}/npm-precache && npm install --verbose || true )
 	( cd ${WRKDIR}/npm-precache && npm install --verbose )
-	
+
 post-extract:
 	${MKDIR} ${WRKSRC}/vendor/download/libchromiumcontent
 	${UNZIP_NATIVE_CMD} -d ${WRKSRC}/vendor/download/libchromiumcontent/ \
@@ -78,7 +80,7 @@ post-extract:
 		${DISTDIR}/${DIST_SUBDIR}/libchromiumcontent-static.zip
 
 post-patch:
-	cp ${FILESDIR}/package-lock.json ${WRKSRC}
+	${CP} ${FILESDIR}/package-lock.json ${WRKSRC}
 	${PATCH} -p1 --ignore-whitespace -d ${WRKSRC} < ${FILESDIR}/electron_111.diff
 	${PATCH} -d ${WRKSRC} < ${FILESDIR}/script_bootstrap.py.diff
 	(cd ${WRKSRC} && script/bootstrap.py -v --clang_dir=/usr || true)
